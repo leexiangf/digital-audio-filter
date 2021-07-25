@@ -1,4 +1,4 @@
-package com.zj;
+package com.zj.example;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -19,6 +19,8 @@ import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
 import org.bytedeco.javacv.Frame;
+
+import com.zj.filter.AudioFilter;
 
 /**
  * java视频转码之音频滤波实现

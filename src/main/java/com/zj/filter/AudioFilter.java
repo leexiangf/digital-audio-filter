@@ -1,4 +1,4 @@
-package com.zj;
+package com.zj.filter;
 
 /**
  * 双二次滤波器之低通、高通
