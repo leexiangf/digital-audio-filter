@@ -20,9 +20,9 @@ public class TestDetectQuiet {
 
 	public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
 		
-		loadFile("./data/安静.wav");
-//		loadFile("./data/有声.wav");
-		
+		//loadFile("./data/安静.wav");
+		loadFile("./data/有声.wav");
+		//loadFile("./data/无声音.mp3");
 	}
 	
 	/**
