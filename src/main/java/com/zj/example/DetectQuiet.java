@@ -2,6 +2,8 @@ package com.zj.example;
 
 import com.zj.filter.DetectSoundFilter;
 import org.apache.tomcat.util.file.Matcher;
+import java.util.logging.Logger;
+
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -29,11 +31,11 @@ public class DetectQuiet {
 	 private final  static String reg = ".+(.mp3|.wav|.MP3|.MPEG)$";
 
 	public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
-		
+
 		//loadFile("./data/有声.wav");
 		//loadFile("./data/安静.wav");
-		loadFile("./data/有声音.mp3");
-		//loadFile("./data/0011234.mp3");
+		//loadFile("./data/有声音.mp3");
+		loadFile("./data/0011234.mp3");
 		//loadFile("./data/无声音.mp3");
 	    //loadUrl(mp3Path);
 	}
