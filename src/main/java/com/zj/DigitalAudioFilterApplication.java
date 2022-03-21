@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("classpath/mapper")
+@MapperScan("com.zj.mapper")
 public class DigitalAudioFilterApplication {
 
     public static void main(String[] args) {

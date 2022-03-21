@@ -1,23 +1,30 @@
 package com.zj.po;
 
-import javax.xml.crypto.Data;
+
+import lombok.Data;
 
 /**
  * @Classname TalkInfo
- * @Description TODO
+ * @Description
  * @Date 2022/3/21 17:48
  * @Created by lxf
  */
 
-@lombok.Data
+@Data
 public class TalkInfo {
+
+    private int id;
 
     private String talkId;
 
-    private Data terminalInfo;
+    private String terminalInfo;
 
     private String phoneType;
 
     private String srcUrl;
+
+    private int soundState;
+
+    private double proportion;
 
 }

@@ -2,7 +2,7 @@ package com.zj.result;
 
 /**
  * @Classname ResultDB
- * @Description TODO
+ * @Description
  * @Date 2022/3/21 12:05
  * @Created by lxf
  */
