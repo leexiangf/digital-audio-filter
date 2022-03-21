@@ -22,8 +22,14 @@ public class DetectSoundFilter {
 	 */
 	public boolean isSilence(final double[] buffer) {
 		double currentSPL = soundPressureLevel(buffer);
-		//System.out.println("声压："+currentSPL);
+		System.out.println("声压："+currentSPL);
 		return currentSPL < soundThreshold;
+	}
+
+	public double currentSPL(final double[] buffer) {
+		double currentSPL = soundPressureLevel(buffer);
+		//System.out.println("声压："+(int)currentSPL);
+		return currentSPL ;
 	}
 
 	/**
@@ -52,8 +58,8 @@ public class DetectSoundFilter {
 	 * @return
 	 */
 	private double linearToDecibel(final double value) {
-		//return value==0d? 0d: 20.0 * Math.log10(value);
-		return  20.0 * Math.log10(value);
+		return value==0? 0: 20.0 * Math.log10(value);
+		//return  20.0 * Math.log10(value);
 	}
 
 	/**

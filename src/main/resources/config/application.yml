@@ -1,0 +1,15 @@
+# 应用名称
+spring:
+  application:
+    name: DigitalAudioFilter
+  datasource:
+    url: jdbc:mysql://192.168.10.103:3306/risktel?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: borya_net@103%11002211
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+# 应用服务 WEB 访问端口
+server:
+  port : 8082
+
+

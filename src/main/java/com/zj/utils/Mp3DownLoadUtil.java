@@ -2,6 +2,9 @@ package com.zj.utils;
 
 import com.sun.istack.internal.Nullable;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,7 +19,7 @@ public class Mp3DownLoadUtil {
 
 
         //默认文件路径
-        public final static String defaultPath="./data/";
+        public final static String DEFAULT_PATH="./data/";
 
 
         /**
@@ -24,14 +27,14 @@ public class Mp3DownLoadUtil {
          * @param path  url地址
          * @param localPath  本地地址
          */
-        public static boolean downLoadUrl(String path,String localPath)  {
+        public static boolean downLoadUrl(String urlPath,String localPath)  {
              byte[] bytes = new byte[1024];
-            URL url = null;
-            InputStream inputStream =null;
-            FileOutputStream fileOutputStream =null;
+            URL url ;
+            InputStream inputStream ;
+            FileOutputStream fileOutputStream ;
             int n;
             try {
-                url = new URL(path);
+                url = new URL(urlPath);
                 inputStream = url.openStream();
                 fileOutputStream = new FileOutputStream(localPath);
                 while ((n=inputStream.read(bytes)) != -1){
@@ -41,10 +44,8 @@ public class Mp3DownLoadUtil {
                 fileOutputStream.close();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                return false;
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
             }
             return true;
         }
@@ -66,7 +67,7 @@ public class Mp3DownLoadUtil {
         }
 
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(deleteFile("1234", defaultPath));
+        System.out.println(deleteFile("1234", DEFAULT_PATH));
     }
 
 
