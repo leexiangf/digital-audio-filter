@@ -2,19 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zj.mapper.TalkInfoMapper">
 
-    <resultMap id="talkInfoMap" type="com.zj.po.TalkInfo">
+<!--    <resultMap id="talkInfoMap" type="com.zj.po.TalkInfo">
         <id property="id" column="id"/>
         <result property="talkId" column="talk_id"/>
         <result property="terminalInfo" column="terminal_info"/>
         <result property="phoneType" column="phone_type"/>
         <result property="srcUrl" column="src_url"/>
-    </resultMap>
+    </resultMap>-->
     
     <select id="selectAll" resultType="com.zj.po.TalkInfo">
-        select * from talkInfo
+        SELECT tt.id, tt.talk_id,tt.duration_second,
+        tt.terminal_info,tt.phone_type,tf.src_url
+        from tb_talk_record tt join tb_talk_record_file tf
+        on tt.talk_id = tf.talk_id  where tf.src_url !=''
     </select>
 
     <select id="selectById" resultType="com.zj.po.TalkInfo" >
-        select * from talkInfo where id = #{id}
+        SELECT tt.id, tt.talk_id,tt.duration_second,
+        tt.terminal_info,tt.phone_type,tf.src_url
+        from tb_talk_record tt join tb_talk_record_file tf
+        on tt.talk_id = tf.talk_id  where tt.id =#{id}
     </select>
+
+
+    <select id="selectByFileName" resultType="com.zj.po.TalkInfo" >
+        SELECT tt.id, tt.talk_id,tt.duration_second,
+        tt.terminal_info,tt.phone_type,tf.src_url
+        from tb_talk_record tt join tb_talk_record_file tf
+        on tt.talk_id = tf.talk_id  where tf.src_url =#{srcUrl}
+    </select>
+
+
 </mapper>

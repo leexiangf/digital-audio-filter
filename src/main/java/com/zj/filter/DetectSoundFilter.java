@@ -22,13 +22,16 @@ public class DetectSoundFilter {
 	 */
 	public boolean isSilence(final double[] buffer) {
 		double currentSPL = soundPressureLevel(buffer);
-		System.out.println("声压："+currentSPL);
-		return currentSPL < soundThreshold;
+		return currentSPL==0? true : currentSPL < soundThreshold;
 	}
 
+	/**
+	 * 返回声压值
+	 * @param buffer
+	 * @return
+	 */
 	public double currentSPL(final double[] buffer) {
 		double currentSPL = soundPressureLevel(buffer);
-		//System.out.println("声压："+(int)currentSPL);
 		return currentSPL ;
 	}
 

@@ -17,4 +17,6 @@ public interface TalkInfoMapper {
     List<TalkInfo> selectAll();
 
     TalkInfo selectById(@Param("id") int id);
+
+    TalkInfo selectByFileName(@Param("srcUrl") String fileName);
 }

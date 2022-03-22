@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @ClassName : SecurityConfig
- * @Description TODO
+ * @Description
  * @Date 2022/3/21 19:44
  * @Created lxf
  */

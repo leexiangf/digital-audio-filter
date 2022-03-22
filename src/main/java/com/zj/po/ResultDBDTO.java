@@ -1,4 +1,4 @@
-package com.zj.result;
+package com.zj.po;
 
 /**
  * @Classname ResultDB
@@ -6,7 +6,7 @@ package com.zj.result;
  * @Date 2022/3/21 12:05
  * @Created by lxf
  */
-public class ResultDB {
+public class ResultDBDTO {
 
     //db总量
     private long dbCount;
@@ -74,10 +74,10 @@ public class ResultDB {
         this.proportion = proportion;
     }
 
-    public ResultDB() {
+    public ResultDBDTO() {
     }
 
-    public ResultDB(long dbCount, long dbZero, long dbLow, long dbMid, long dbHigh, double proportion) {
+    public ResultDBDTO(long dbCount, long dbZero, long dbLow, long dbMid, long dbHigh, double proportion) {
         this.dbCount = dbCount;
         this.dbZero = dbZero;
         this.dbLow = dbLow;

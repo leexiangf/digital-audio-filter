@@ -17,14 +17,12 @@ public class TalkInfo {
 
     private String talkId;
 
+    private int durationSecond;
+
     private String terminalInfo;
 
     private String phoneType;
 
     private String srcUrl;
-
-    private int soundState;
-
-    private double proportion;
 
 }
