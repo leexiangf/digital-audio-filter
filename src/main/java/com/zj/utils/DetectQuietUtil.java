@@ -48,8 +48,9 @@ public class DetectQuietUtil {
 		//loadFile("./data/安静.wav");
 		//loadFile("data/有声音.mp3");
 		//loadFile("data/2022/202202/20220224/lp20220224151622216.mp3");
-		File f = new File("data/2022/202202/20220224/lp20220224151622216.mp3");
+		//File f = new File("data/2022/202202/20220224/lp20220224151622216.mp3");
 		//loadFile("./data/有声音.mp3");
+		//loadFile(".\\data\\有声音.mp3");
 		//System.out.println(resultDBDTO);
 		//loadFile("./data/0011234.mp3");
 		//loadFile("data/无声音.mp3");
@@ -95,7 +96,6 @@ public class DetectQuietUtil {
 		/**
 		 * PCM声音是重采样为无符号16bit的深度的，然后我们需要得到某一时间（一般是零点几毫秒）PCM所在内存的地址和PCM声音的大小，
 		 * 而16bit也就是16bit/8bit=2byte，因此我们可以从PCM所在地址里面按顺序取出2个byte的数据然后转化成的值就可以拿到当前采样点的振幅了
-		 * 如果精细一点可以把 byte[1024] 的size减小
 		 */
 		byte[] frame = new byte[1024];
 

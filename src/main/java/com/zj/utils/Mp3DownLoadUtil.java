@@ -8,6 +8,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Classname Mp3DownLoadUtil
@@ -19,7 +21,7 @@ public class Mp3DownLoadUtil {
 
 
         //默认文件路径
-        public final static String DEFAULT_PATH="./data/";
+        public final static String DEFAULT_PATH="data/";
 
 
         /**
@@ -66,9 +68,44 @@ public class Mp3DownLoadUtil {
            return file.delete();
         }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(deleteFile("1234", DEFAULT_PATH));
-    }
+        public static ArrayList<String> SearchFile(String root,ArrayList<String> list){
+            File file = new File(root);
+            //获取全部File
+            //返回目录名加文件名
+            //添加过滤器
+            String[] strings = file.list();
 
+            //这些路径名表示此抽象路径名所表示目录中的文件。
+            File[] files = file.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    return true;
+                }
+            });
+            for (int i = 0; i < files.length; i++) {
+                //判断是否是目录，是的话继续递归
+                if (files[i].isDirectory()) {
+                    SearchFile(files[i].getAbsolutePath(), list);
+                } else {
+                    //否则添加到list
+                    //获取全部文件名
+                    //list.add(files[i].getName());
+                    //获取全部包+文件名
+                    String absolutePath = files[i].getAbsolutePath();
+                    String[] split = absolutePath.split("filter");
+                    String o =split[1];
+                    String replace = o.replace("\\", "/");
+                    list.add(replace);
+                }
+            }
+            return list;
+        }
+
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list= SearchFile(DEFAULT_PATH,list);
+       list.forEach(System.out::println);
+        //System.out.println(list.get(0));
+    }
 
 }
