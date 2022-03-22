@@ -39,7 +39,7 @@ public class DetectQuietUtil {
 
 	 private final  static String reg = ".+(.mp3|.wav|.MP3|.MPEG|.m4a|.aac)$";
 
-	public final  static  String  PARENT_FILE_PATH="./data/";
+	 public final  static  String  PARENT_FILE_PATH="./data/";
 
 	 public final  static  String  PARENT_URL_PATH="https://call-file-online.oss-cn-hangzhou.aliyuncs.com/";
 
