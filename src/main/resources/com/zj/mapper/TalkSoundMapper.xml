@@ -6,5 +6,16 @@
     insert into tb_talk_sound (talk_id,app_version,phone_type,duration_second,sound_state,proportion,record_file_flag,src_url)
        values (#{talkId},#{appVersion},#{phoneType},#{durationSecond},#{soundState},#{proportion},#{recordFileFlag},#{srcUrl})
 </insert>
+<insert id="insertBatch" parameterType="com.zj.po.TalkStatisticsEntity" useGeneratedKeys="true">
+    insert into tb_talk_sound_statisticsEntity
+        (phone_type,,app_version,has_record,no_record,has_sound,no_sound,proportion,create_time)
+        values
+        <foreach collection="tss" item="ts" separator=",">
+            (
+             #{tss.phoneType},#{tss.appVersion},#{tss.hasRecord},#{tss.noRecord},
+             #{tss.hasSound},#{tss.noSound},#{tss.proportion},#{tss.createTime}
+            )
+        </foreach>
+</insert>
 
 </mapper>

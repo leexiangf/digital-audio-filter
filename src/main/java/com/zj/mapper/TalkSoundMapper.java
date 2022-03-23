@@ -1,6 +1,9 @@
 package com.zj.mapper;
 
 import com.zj.po.TalkSoundEntity;
+import com.zj.po.TalkStatisticsEntity;
+
+import java.util.List;
 
 /**
  * @Classname TalkSoundMapper
@@ -11,4 +14,5 @@ import com.zj.po.TalkSoundEntity;
 public interface TalkSoundMapper {
 
     int addOne(TalkSoundEntity talkSoundEntity);
+    void insertBatch(List<TalkStatisticsEntity> tss);
 }
