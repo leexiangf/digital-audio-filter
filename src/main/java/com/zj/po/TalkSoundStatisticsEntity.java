@@ -6,13 +6,13 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @ClassName : TalkStatisticsEntity
- * @Description
+ * @ClassName : TalkSoundStatistics
+ * @Description  声音统计
  * @Date 2022/3/22 23:19
  * @Created lxf
  */
 @Data
-public class TalkStatisticsEntity {
+public class TalkSoundStatisticsEntity {
 
     @ExcelProperty("电话型号")
     private String phoneType;
@@ -29,5 +29,5 @@ public class TalkStatisticsEntity {
     @ExcelProperty("有声音占比")
     private double proportion;
     @ExcelProperty("创建时间")
-    private LocalDateTime createTime;
+    private long createTime;
 }

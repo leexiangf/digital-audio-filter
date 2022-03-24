@@ -1,7 +1,10 @@
 package com.zj.mapper;
 
 import com.zj.po.TalkSoundEntity;
-import com.zj.po.TalkStatisticsEntity;
+
+import java.util.List;
+import com.zj.po.TalkSoundStatisticsEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +17,8 @@ import java.util.List;
 public interface TalkSoundMapper {
 
     int addOne(TalkSoundEntity talkSoundEntity);
-    void insertBatch(List<TalkStatisticsEntity> tss);
+
+    List<TalkSoundStatisticsEntity> talkSoundStatistics();
+
+    int insertBatch(@Param("tss") List<TalkSoundStatisticsEntity> tss);
 }

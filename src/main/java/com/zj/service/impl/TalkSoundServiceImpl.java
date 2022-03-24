@@ -6,6 +6,7 @@ import com.zj.mapper.TalkSoundMapper;
 import com.zj.po.ResultDBDTO;
 import com.zj.po.TalkInfo;
 import com.zj.po.TalkSoundEntity;
+import com.zj.po.TalkSoundStatisticsEntity;
 import com.zj.service.TalkSoundService;
 import com.zj.utils.DetectQuietUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Service;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.xml.ws.soap.Addressing;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @Classname TalkSoundServiceImpl
@@ -43,6 +46,11 @@ public class TalkSoundServiceImpl implements TalkSoundService {
     @Autowired
     TalkSoundMapper talkSoundMapper;
 
+    /**
+     * 检测一个文件是否有声音，并入库
+     * @param fileName  文件路径
+     * @return
+     */
     @Override
     public int talkSoundCheck(String fileName)  {
          String srcUrl = fileToUrl(fileName);
@@ -63,6 +71,7 @@ public class TalkSoundServiceImpl implements TalkSoundService {
              talkSoundEntity.setAppVersion(appVersion);
          }
 
+         //TODO  tempFile02 修改为 fileName
          ResultDBDTO resultDBDTO = DetectQuietUtil.loadFile(tempFile02);
         talkSoundEntity.setProportion(resultDBDTO.getProportion());
         talkSoundEntity.setSoundState(resultDBDTO.getProportion()>0 ? 1 : 0);
@@ -71,20 +80,32 @@ public class TalkSoundServiceImpl implements TalkSoundService {
         return  talkSoundMapper.addOne(talkSoundEntity);
     }
 
+    /**
+     * 统计通话录音信息
+     * @return
+     */
+    @Override
+    public List<TalkSoundStatisticsEntity> talkSoundStatistics() {
+        List<TalkSoundStatisticsEntity> tss = talkSoundMapper.talkSoundStatistics();
+         LocalDateTime now = LocalDateTime.now();
+         long timeMillis = System.currentTimeMillis();
+        tss.stream().forEach(s ->{
+            s.setProportion(s.getHasRecord()==0? 0:(float)s.getHasSound()/s.getHasRecord());
+            s.setCreateTime(timeMillis);
+        });
+        return tss;
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     *  将统计好的录音信息入库
+     * @param tss
+     * @return
+     */
+    @Override
+    public int insertBatch(List<TalkSoundStatisticsEntity> tss) {
+       return   talkSoundMapper.insertBatch(tss);
+    }
 
     /**
      * 通过本地文件名查找对对应url

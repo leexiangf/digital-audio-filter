@@ -2,13 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zj.mapper.TalkInfoMapper">
 
-<!--    <resultMap id="talkInfoMap" type="com.zj.po.TalkInfo">
-        <id property="id" column="id"/>
-        <result property="talkId" column="talk_id"/>
-        <result property="terminalInfo" column="terminal_info"/>
-        <result property="phoneType" column="phone_type"/>
-        <result property="srcUrl" column="src_url"/>
-    </resultMap>-->
+
     
     <select id="selectAll" resultType="com.zj.po.TalkInfo">
         SELECT tt.id, tt.talk_id,tt.duration_second,

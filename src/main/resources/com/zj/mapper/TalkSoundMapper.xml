@@ -6,16 +6,23 @@
     insert into tb_talk_sound (talk_id,app_version,phone_type,duration_second,sound_state,proportion,record_file_flag,src_url)
        values (#{talkId},#{appVersion},#{phoneType},#{durationSecond},#{soundState},#{proportion},#{recordFileFlag},#{srcUrl})
 </insert>
-<insert id="insertBatch" parameterType="com.zj.po.TalkStatisticsEntity" useGeneratedKeys="true">
-    insert into tb_talk_sound_statisticsEntity
-        (phone_type,,app_version,has_record,no_record,has_sound,no_sound,proportion,create_time)
+
+<insert id="insertBatch" parameterType="com.zj.po.TalkSoundStatisticsEntity" useGeneratedKeys="true">
+    insert into tb_talk_sound_statistics
+        (phone_type,app_version,has_record,no_record,has_sound,no_sound,proportion,create_time)
         values
         <foreach collection="tss" item="ts" separator=",">
             (
-             #{tss.phoneType},#{tss.appVersion},#{tss.hasRecord},#{tss.noRecord},
-             #{tss.hasSound},#{tss.noSound},#{tss.proportion},#{tss.createTime}
+             #{ts.phoneType},#{ts.appVersion},#{ts.hasRecord},#{ts.noRecord},
+             #{ts.hasSound},#{ts.noSound},#{ts.proportion},#{ts.createTime}
             )
         </foreach>
 </insert>
+
+ <select id="talkSoundStatistics"    resultType="com.zj.po.TalkSoundStatisticsEntity">
+     select app_version,phone_type,SUM(case sound_state when 1 then 1 else 0 end ) as has_sound,SUM(case sound_state when 0 then 1 else 0 end ) as no_sound ,
+     SUM(case record_file_flag when 1 then 1 else 0 end ) as has_record , SUM(case record_file_flag when 0 then 1 else 0 end ) as no_record
+     from tb_talk_sound    GROUP BY  app_version,phone_type
+ </select>
 
 </mapper>

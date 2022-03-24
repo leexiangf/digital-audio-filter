@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @Classname TalkSoundEntity
- * @Description  对应数据库tb_talk_soud表
+ * @Description  声音识别 对应数据库tb_talk_soud表
  * @Date 2022/3/22 10:20
  * @Created by lxf
  */

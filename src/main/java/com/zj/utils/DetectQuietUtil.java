@@ -7,6 +7,7 @@ import com.zj.po.TalkInfo;
 import org.apache.tomcat.util.file.Matcher;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -55,6 +56,8 @@ public class DetectQuietUtil {
 		//loadFile("./data/0011234.mp3");
 		//loadFile("data/无声音.mp3");
 	    //loadUrl(mp3Path);
+
+		System.out.println(LocalDateTime.now());
 	}
 
 	/**
@@ -64,7 +67,6 @@ public class DetectQuietUtil {
 	public static ResultDBDTO loadFile(String path)  {
 		File f = new File(path);
 
-		logger.info("ffffffffff-"+f.getAbsolutePath());
 		AudioInputStream audioStream = null;
 		try {
 			audioStream = AudioSystem.getAudioInputStream(f);

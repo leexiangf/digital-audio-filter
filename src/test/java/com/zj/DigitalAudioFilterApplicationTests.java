@@ -1,8 +1,7 @@
 package com.zj;
 
 import com.alibaba.excel.EasyExcel;
-import com.zj.mapper.TalkInfoMapper;
-import com.zj.po.TalkStatisticsEntity;
+import com.zj.po.TalkSoundStatisticsEntity;
 import com.zj.service.impl.TalkSoundServiceImpl;
 import com.zj.utils.DetectQuietUtil;
 
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 
@@ -20,12 +20,12 @@ class DigitalAudioFilterApplicationTests {
     TalkSoundServiceImpl soundService;
 
     private String tempUrl=
-            "data/2021/202112/20211220/20211220184015750cut.mp3";
+            "data/2022/202203/20220322/A02087688093_1647930708471_220322143232152.aac";
 
     @Test
     void contextLoads() {
-       // System.out.println(soundService.talkSoundCheck(tempUrl));
-        if(tempUrl.endsWith("cut.mp3")){
+        System.out.println(soundService.talkSoundCheck(tempUrl));
+     /*   if(tempUrl.endsWith("cut.mp3")){
             String[] cuts = tempUrl.split("cut");
             tempUrl = cuts[0]+cuts[1];
 
@@ -35,15 +35,22 @@ class DigitalAudioFilterApplicationTests {
 
 
             tempUrl= DetectQuietUtil.PARENT_URL_PATH+split[1];
-        }
+        }*/
 
     }
 
     @Test
     void easyPoiTest(){
-        ArrayList<TalkStatisticsEntity> list = new ArrayList<>();
+        ArrayList<TalkSoundStatisticsEntity> list = new ArrayList<>();
         String fileName=DetectQuietUtil.PARENT_FILE_PATH+"通话录音统计表.xlsx";
-        EasyExcel.write(fileName, TalkStatisticsEntity.class).sheet().doWrite(list);
+        EasyExcel.write(fileName, TalkSoundStatisticsEntity.class).sheet().doWrite(list);
+    }
+
+    @Test
+    void talkTest(){
+         List<TalkSoundStatisticsEntity> tss = soundService.talkSoundStatistics();
+         tss.forEach(System.out::println);
+        System.out.println(soundService.insertBatch(tss));
     }
 
 }
