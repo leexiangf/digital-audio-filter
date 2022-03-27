@@ -6,6 +6,9 @@ spring:
     password: borya_net@103%11002211
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    serialization: true
+
 # 应用服务 WEB 访问端口
 server:
   port : 8080

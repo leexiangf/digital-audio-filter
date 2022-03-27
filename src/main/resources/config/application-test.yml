@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://124.221.172.3:3306/lxfdb?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 # 应用服务 WEB 访问端口
 server:
@@ -15,3 +15,14 @@ server:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+redis:
+  host: 124.221.172.3
+  port: 6379
+  #password:
+  jedis:
+    pool:
+      max-idle: 10  #连接池空闲最大
+      min-idle: 2   #连接池空闲最小
+      max-active: 200 #连接池最大链接数
+      max-wait: 3000 #连接池最大超时时间
